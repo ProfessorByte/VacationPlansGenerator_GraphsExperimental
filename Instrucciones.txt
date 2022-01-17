@@ -1,0 +1,33 @@
+Para el funcionamiento del programa se implementó dos grafos, uno es para las rutas por Tierra y el otro es para las rutas por Aire, cada arista de cada uno de los grafos tiene un peso determinado el cual es el tiempo de llegada desde un lugar a otro, el grafo por tierra conecta a los lugares solo si es posible su acceso por tierra, pero en el caso del grafo por aire todos los lugares están conectados porque ya que en este caso se tomó en cuenta a los paises, se sabe que todos los paises con los que están formados nuestros grafos tienen un aeropuerto, por tanto es un grafo completo.
+
+Al hacerlo correr podemos ver que nos pide un lugar de origen, dónde podemos colocar cualquiera de los paises cargados a los grafos, luego nos pide un presupuesto inicial que es el dinero en $us con el que disponemos para hacer el viaje, luego nos pide que ingresemos un caracter, si es que se quiere viajar por tierra se ingresa la letra 'L' y si se quiere viajar por aire se debe ingresar la letra 'A', a continuación se pedira que se ingresen los lugares a visitar en formato {[LUGAR A VISITAR], [DIAS DE ESTADIA]}, acá se debe ingresar un lugar a la vez ya que volverá a hacer la pregunta repetitivamente hasta que se ingrese una cadena de texto vacía, y finalmente se imprimirá por consola un reporte tomando en cuenta el presupuesto inicial.
+Cabe mencionar que también se toma en cuenta el regreso del viaje en el reporte, y que el formato del reporte es:
+
+[1° PAIS A VISITAR]: {MEJOR RUTA PARA LLEGAR AL DESTINO} -> [DIAS DE ESTADIA]
+[2° PAIS A VISITAR]: {MEJOR RUTA PARA LLEGAR AL DESTINO} -> [DIAS DE ESTADIA]
+.
+.
+.
+[N° PAIS A VISITAR]: {MEJOR RUTA PARA LLEGAR AL DESTINO} -> [DIAS DE ESTADIA]
+
+Respecto a la mejor ruta, para verificar su funcionamiento es mejor poner L para indicarle al programa que el viaje se hará por tierra, de esta manera, en la mejor ruta es posible que salgan varios paises, porque por aire como es un grafo completo lo más probable es que si el algoritmo que se utilizó para generar la mejor ruta que en este caso fue el de Floyd Warshall, verifica que la mejor ruta es la arista directa al otro vértice, entonces la mejor ruta solo contendrá a dos países, si el algoritmo verifica que otra es la mejor ruta, esa será la salida.
+Otra cosa a tomar en cuenta es que cada país tiene un mínimo de días de estadía, si es que el usuario coloca menos días entonces se mortrará un mensaje de advertencia y se detendrá el programa, además de que se debe recordar que el formato para ingresar destinos lleva un ", " en medio habrá un error en la ejecución si solo se coloca ",".
+
+Aquí se muestra un ejemplo de la salida por consola:
+
+Introduce el lugar de origen:
+Bolivia
+Ingrese su presupuesto en $us:
+9000
+Ingrese L si su viaje sera por tierra o A si su viaje sera por aire: 
+L
+Introduce los lugares a visitar en formato: {[LUGAR A VISITAR], [DIAS DE ESTADIA]}, coloque un lugar a la vez
+Peru, 10
+Introduce los lugares a visitar en formato: {[LUGAR A VISITAR], [DIAS DE ESTADIA]}, coloque un lugar a la vez
+Argentina, 20
+Introduce los lugares a visitar en formato: {[LUGAR A VISITAR], [DIAS DE ESTADIA]}, coloque un lugar a la vez
+
+Su presupuesto es suficiente para este vaje, le sobrará 3350.0$us
+Peru: Bolivia - Peru -> 10 Dias
+Argentina: Peru - Bolivia - Argentina -> 20 Dias
+El presupuesto para este viaje es de: 5710.0
